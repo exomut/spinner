@@ -6,10 +6,17 @@ var timer;
 function Spinner () {
   this.image = new Image();
   this.image.src = "./spinner.png";
-  this.speed = 0.5;
+  this.speed = 1.0;
   this.isSpinning = false;
 
+  // Make animation adjustments between frames
+  this.act = function(){
+    this.speed -= this.speed / 100;
+    if(this.speed < 0.02) this.isSpinning = false;
+  };
+
   this.draw = function(context){
+    this.act();
     // Translate the canvas so it rotates around the center
     context.translate(canvas.width/2, canvas.height/2);
 
@@ -18,10 +25,12 @@ function Spinner () {
     context.drawImage(this.image, -this.image.width/2, -this.image.height/2);
     context.translate(-canvas.width/2, -canvas.height/2);
   };
+
 };
 
 function spin() {
   spinner.isSpinning = spinner.isSpinning ? false : true;
+  spinner.speed = 1.0;
 }
 
 function init() {
