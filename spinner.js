@@ -11,8 +11,8 @@ function Spinner () {
 
   // Make animation adjustments between frames
   this.act = function(){
-    this.speed -= this.speed / 100;
-    if(this.speed < 0.02) this.isSpinning = false;
+    this.speed -= this.speed / 50;
+    if(this.speed < 0.2) this.isSpinning = false;
   };
 
   this.draw = function(context){
@@ -26,11 +26,15 @@ function Spinner () {
     context.translate(-canvas.width/2, -canvas.height/2);
   };
 
+  this.spin = function(){
+    this.isSpinning = this.isSpinning ? false : true;
+    this.speed = Math.random() + 1.0;
+  };
+
 };
 
 function spin() {
-  spinner.isSpinning = spinner.isSpinning ? false : true;
-  spinner.speed = 1.0;
+  spinner.spin();
 }
 
 function init() {
