@@ -1,19 +1,20 @@
+// Settings
+var fps = 60; // Frames Per Second
+
 var canvas;
 var context;
 var spinner;
 var timer;
-var fps = 60;
 
 function Spinner () {
   this.image = new Image();
   this.image.src = "./spinner.png";
-  this.speed = 0.5;
   this.isSpinning = false;
 
   // Make animation adjustments between frames
   this.act = function(){
-    this.speed -= this.speed / (fps * 2);
-    if(this.speed < 0.2) this.isSpinning = false;
+    this.speed -= this.speed / (fps * 1.5);
+    if(this.speed < 0.05) this.isSpinning = false;
   };
 
   this.draw = function(context){
@@ -31,7 +32,6 @@ function Spinner () {
     this.isSpinning = this.isSpinning ? false : true;
     this.speed = Math.random() + 1.0;
   };
-
 };
 
 function spin() {
