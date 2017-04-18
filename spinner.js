@@ -1,5 +1,7 @@
 // Settings
 var fps = 60; // Frames Per Second
+var boards = ["board_four.png", "board_six.png", "board_ten.png"];
+var currentBoard = 0;
 
 var canvas;
 var context;
@@ -34,6 +36,20 @@ function Spinner () {
   };
 };
 
+function setBoard() {
+  document.getElementById("board").style.backgroundImage = "url('./" + boards[currentBoard] + "')";
+}
+
+function setBoardNext() {
+    currentBoard = currentBoard + 1 < boards.length ? currentBoard + 1 : 0;
+    setBoard();
+}
+
+function setBoardPrev() {
+    currentBoard = currentBoard - 1 >= 0 ? currentBoard - 1: boards.length - 1;
+    setBoard();
+}
+
 function spin() {
   spinner.spin();
 }
@@ -42,7 +58,9 @@ function init() {
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
 
-  document.getElementById("board").style.backgroundImage = "url('./board_four.png')";
+  setBoard();
+  document.getElementById("prev_board").addEventListener("click", setBoardPrev, false);
+  document.getElementById("next_board").addEventListener("click", setBoardNext, false);
 
   // Setup touch and mouse support to call the spin function
   canvas.addEventListener("mousedown", spin, false);
