@@ -5,6 +5,8 @@ NETWORK:
 
 CACHE:
 spinner.js
+spinner.css
 frabby.png
 spinner.png
 spinner-shadow.png
+board_four.png

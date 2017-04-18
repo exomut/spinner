@@ -3,17 +3,20 @@
   <head>
     <title>Spinner</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="spinner.css" />
     <script type="text/javascript" src="spinner.js"></script>
   </head>
   <body onload="init();">
     <div align="center">
       <ul>
-        <li>Tap the screen to start the spinner.</li>
-        <li>Wait for it to stop or do a quick stop by tapping the screen again.</li>
+        <li>Tap the spinner to start the spinner.</li>
+        <li>Wait for it to stop or do a quick stop by tapping the spinner again.</li>
       </ul>
-      <canvas id="canvas" width="500" height="500">
-        Your browser does not support this web app.
-      </canvas>
+      <div id="board">
+        <canvas id="canvas" width="500px" height="500px">
+          Your browser does not support this web app.
+        </canvas>
+      </div>
     </div>
   </body>
 </html>

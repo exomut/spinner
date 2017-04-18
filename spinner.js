@@ -2,16 +2,17 @@ var canvas;
 var context;
 var spinner;
 var timer;
+var fps = 60;
 
 function Spinner () {
   this.image = new Image();
   this.image.src = "./spinner.png";
-  this.speed = 1.0;
+  this.speed = 0.5;
   this.isSpinning = false;
 
   // Make animation adjustments between frames
   this.act = function(){
-    this.speed -= this.speed / 50;
+    this.speed -= this.speed / (fps * 2);
     if(this.speed < 0.2) this.isSpinning = false;
   };
 
@@ -41,14 +42,16 @@ function init() {
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
 
+  document.getElementById("board").style.backgroundImage = "url('./board_four.png')";
+
   // Setup touch and mouse support to call the spin function
-  document.body.addEventListener("mouseup", spin, false);
-  document.body.addEventListener("touchup", spin, false);
+  canvas.addEventListener("mousedown", spin, false);
+  canvas.addEventListener("touchdown", spin, false);
 
   spinner = new Spinner();
 
-  // Call the draw function 30 times a second
-  setInterval(draw, 1000/30);
+  // Call the draw function x times a second
+  setInterval(draw, 1000/fps);
 }
 
 function draw() {
