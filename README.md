@@ -23,3 +23,5 @@ Add a Board:
  * Center Height: 250px
  * Save image in: ./images folder
  * Add file name in spinner.js: var boards = ["board_four.png", "board_six.png", "my-board.png"];
+ 
+ 
